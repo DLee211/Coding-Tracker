@@ -4,7 +4,7 @@ namespace Coding_Tracker
 {
     class Program
     {
-        private static string connectionString = @"Data Source = habit-tracker.db";
+        private static string connectionString = @"Data Source = coding_tracker.db";
 
         static void Main(string[] args)
         {
@@ -14,10 +14,10 @@ namespace Coding_Tracker
 
                 var tableCmd = connection.CreateCommand();
                 
-                tableCmd.CommandText = @"CREATE TABLE IF NOT EXISTS drinking_water(
+                tableCmd.CommandText = @"CREATE TABLE IF NOT EXISTS coding_tracker(
                                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                                         Date TEXT, 
-                                        Quantity INTEGER)";
+                                        CodingHours INTEGER)";
 
                 tableCmd.ExecuteNonQuery();
 
