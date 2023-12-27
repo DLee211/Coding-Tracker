@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "dvMFP59xe56CIyX26u0hH+KXnU2FtljG/TpLpWKO7CIEJK9zIuTl34CgVnyczCJ42nFxGYxrE6oY0esDPtIvTg==",
+  "success": true,
+  "projectFilePath": "/Users/daniel/RiderProjects/Coding Tracker/Coding Tracker/Coding Tracker.csproj",
+  "expectedPackageFiles": [
+    "/Users/daniel/.nuget/packages/consoletableext/3.2.0/consoletableext.3.2.0.nupkg.sha512",
+    "/Users/daniel/.nuget/packages/microsoft.data.sqlite/8.0.0/microsoft.data.sqlite.8.0.0.nupkg.sha512",
+    "/Users/daniel/.nuget/packages/microsoft.data.sqlite.core/8.0.0/microsoft.data.sqlite.core.8.0.0.nupkg.sha512",
+    "/Users/daniel/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.1.6/sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
+    "/Users/daniel/.nuget/packages/sqlitepclraw.core/2.1.6/sqlitepclraw.core.2.1.6.nupkg.sha512",
+    "/Users/daniel/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.1.6/sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
+    "/Users/daniel/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.6/sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512",
+    "/Users/daniel/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512"
+  ],
+  "logs": []
+}
