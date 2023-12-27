@@ -23,6 +23,7 @@ namespace Coding_Tracker
 
                 connection.Close();
             }
+            UserInput.Input();
         }
     }
 }
