@@ -66,9 +66,9 @@ public class UserInput
                     List<object> rowData = new List<object>
                     {
                         reader.GetInt32(0),
-                        reader.GetDateTime(1),
-                        reader.GetDateTime(2),
-                        reader.GetDateTime(3),
+                        reader.GetString(1),
+                        reader.GetString(2),
+                        reader.GetString(3),
                         reader.GetTimeSpan(4)
                     };
                     
@@ -109,7 +109,7 @@ public class UserInput
                 id = Console.ReadLine();
             }
 
-            DateTime date = GetDateInput();
+            string date = GetDateInput();
 
             DateTime startTime = GetTimeFromUser("Enter the new start time(HH:mm):");
 
@@ -119,7 +119,12 @@ public class UserInput
             
             var tableCmd = connection.CreateCommand();
 
-            tableCmd.CommandText = $"UPDATE coding_tracker SET Date = '{date}', StartTime= '{startTime}',EndTime = '{endTime}',Duration = '{duration}' WHERE Id = '{Id}'";
+            string startTimeFinal = startTime.ToString("HH:mm");
+
+            string endTimeFinal = endTime.ToString("HH:mm");
+            
+
+            tableCmd.CommandText = $"UPDATE coding_tracker SET Date = '{date}', StartTime= '{startTimeFinal}',EndTime = '{endTimeFinal}',Duration = '{duration}' WHERE Id = '{Id}'";
 
             tableCmd.ExecuteNonQuery();
             
@@ -165,7 +170,7 @@ public class UserInput
             
             ViewRecords();
             
-            DateTime date = GetDateInput();
+            string date = GetDateInput();
 
             DateTime startTime = GetTimeFromUser("Enter start time(hh:mm)->");
 
@@ -174,8 +179,16 @@ public class UserInput
             TimeSpan duration = endTime - startTime;
             
             var tableCmd = connection.CreateCommand();
+            
+            string startTimeFinal = startTime.ToString("HH:mm");
+            
+            Console.WriteLine(startTimeFinal);
 
-            tableCmd.CommandText = $"INSERT INTO coding_tracker(Date, StartTime, EndTime, Duration) VALUES('{date}', '{startTime}', '{endTime}', '{duration}')";
+            string endTimeFinal = endTime.ToString("HH:mm");
+            
+            Console.WriteLine(endTimeFinal);
+
+            tableCmd.CommandText = $"INSERT INTO coding_tracker(Date, StartTime, EndTime, Duration) VALUES('{date}', '{startTimeFinal}', '{endTimeFinal}', '{duration}')";
 
             tableCmd.ExecuteNonQuery();
 
@@ -184,11 +197,11 @@ public class UserInput
 
     }
 
-    private static DateTime GetDateInput()
+    private static string GetDateInput()
     {
         Console.WriteLine("Enter the date(MM/dd/yyyy):");
 
-        DateTime result;
+        DateTime dt;
 
         bool isValidInput;
 
@@ -198,13 +211,15 @@ public class UserInput
             string date = Console.ReadLine();
 
             isValidInput = DateTime.TryParseExact(date, "MM/dd/yyyy", null, System.Globalization.DateTimeStyles.None,
-                out result);
+                out dt);
             if (!isValidInput)
             {
                 Console.WriteLine("Invalid date");
             }
 
         } while (!isValidInput);
+
+        string result = dt.ToString("MM/dd/yyyy");
 
         return result;
 
