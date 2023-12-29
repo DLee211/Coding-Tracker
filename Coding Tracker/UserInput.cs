@@ -186,12 +186,8 @@ public class UserInput
             var tableCmd = connection.CreateCommand();
             
             string startTimeFinal = startTime.ToString("HH:mm");
-            
-            Console.WriteLine(startTimeFinal);
 
             string endTimeFinal = endTime.ToString("HH:mm");
-            
-            Console.WriteLine(endTimeFinal);
 
             tableCmd.CommandText = $"INSERT INTO coding_tracker(Date, StartTime, EndTime, Duration) VALUES('{date}', '{startTimeFinal}', '{endTimeFinal}', '{duration}')";
 
@@ -206,48 +202,18 @@ public class UserInput
     {
         Console.WriteLine("Enter the date(MM/dd/yyyy):");
 
-        DateTime dt;
-
-        bool isValidInput;
-
-        do
-        {
-
-            string date = Console.ReadLine();
-
-            isValidInput = DateTime.TryParseExact(date, "MM/dd/yyyy", null, System.Globalization.DateTimeStyles.None,
-                out dt);
-            if (!isValidInput)
-            {
-                Console.WriteLine("Invalid date");
-            }
-
-        } while (!isValidInput);
+        DateTime dt = Validation.DateInputValidation("MM/dd/yyyy");
 
         string result = dt.ToString("MM/dd/yyyy");
 
         return result;
-
     }
 
     private static DateTime GetTimeFromUser(string prompt)
     {
-        DateTime result;
-        bool isValidInput;
+        Console.Write(prompt);
 
-        do
-        {
-            Console.Write(prompt);
-            string userInput = Console.ReadLine();
-
-            isValidInput = DateTime.TryParseExact(userInput, "HH:mm", null, System.Globalization.DateTimeStyles.None,
-                out result);
-
-            if (!isValidInput)
-            {
-                Console.WriteLine("Invalid input. Please enter a valid time");
-            }
-        } while (!isValidInput);
+        DateTime result = Validation.DateInputValidation("HH:mm");
 
         return result;
     }
