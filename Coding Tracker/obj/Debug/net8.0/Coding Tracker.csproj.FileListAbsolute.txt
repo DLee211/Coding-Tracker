@@ -40,3 +40,9 @@
 /Users/daniel/RiderProjects/Coding Tracker/Coding Tracker/obj/Debug/net8.0/Coding Tracker.pdb
 /Users/daniel/RiderProjects/Coding Tracker/Coding Tracker/obj/Debug/net8.0/Coding Tracker.genruntimeconfig.cache
 /Users/daniel/RiderProjects/Coding Tracker/Coding Tracker/obj/Debug/net8.0/ref/Coding Tracker.dll
+/Users/daniel/RiderProjects/Coding Tracker/Coding Tracker/bin/Debug/net8.0/Coding Tracker.dll.config
+/Users/daniel/RiderProjects/Coding Tracker/Coding Tracker/bin/Debug/net8.0/System.Configuration.ConfigurationManager.dll
+/Users/daniel/RiderProjects/Coding Tracker/Coding Tracker/bin/Debug/net8.0/System.Diagnostics.EventLog.dll
+/Users/daniel/RiderProjects/Coding Tracker/Coding Tracker/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll
+/Users/daniel/RiderProjects/Coding Tracker/Coding Tracker/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll
+/Users/daniel/RiderProjects/Coding Tracker/Coding Tracker/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll
