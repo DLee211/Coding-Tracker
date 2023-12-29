@@ -34,14 +34,41 @@ public class UserInput
                 case "2":
                     InsertCodingRecords();
                     break;
-                //case "3":
-                    //DeleteRecords();
-                    //break;
+                case "3":
+                    DeleteRecords();
+                    break;
                 //case "4":
                     //UpdateRecords();
                     //break;
             }
         }
+    }
+
+    private static void DeleteRecords()
+    {
+        using (var connection = new SqliteConnection(connectionString))
+        {
+            Console.WriteLine("Enter the id of the row you want to delete:");
+            string id = Console.ReadLine();
+            int Id;
+
+            while (!int.TryParse(id, out Id))
+            {
+                Console.WriteLine("Id has to be an integer!");
+                id = Console.ReadLine();
+            }
+
+            connection.Open();
+                                                                                 
+            var tableCmd = connection.CreateCommand();
+
+            tableCmd.CommandText = $"DELETE FROM coding_tracker WHERE Id = '{Id}'";
+
+            tableCmd.ExecuteNonQuery();
+
+            connection.Close();
+        }
+
     }
 
     private static void InsertCodingRecords()
