@@ -12,14 +12,17 @@ public class UserInput
     {
         while (closeApp == false)
         {
+            Console.Clear();
+            
             Console.WriteLine("\nMenu");
-            Console.WriteLine("\nWhat do you want to do?");
+            Console.WriteLine("What do you want to do?");
+            Console.WriteLine("--------------------------------------------");
             Console.WriteLine("\ntype 0 if you want to close application");
             Console.WriteLine("Type 1 to View Coding records");
             Console.WriteLine("Type 2 to insert Coding Hours");
             Console.WriteLine("Type 3 to delete record Coding Hours");
             Console.WriteLine("Type 4 to update record");
-            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("\n--------------------------------------------");
 
             string command = Console.ReadLine();
 
@@ -31,6 +34,8 @@ public class UserInput
                     break;
                 case "1":
                     ViewRecords();
+                    Console.WriteLine("Press any key to return to menu:");
+                    Console.ReadLine();
                     break;
                 case "2":
                     InsertCodingRecords();
