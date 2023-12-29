@@ -91,7 +91,7 @@ public class UserInput
                 .WithTitle("Coding Tracker ", ConsoleColor.Yellow, ConsoleColor.DarkGray)
                 .WithColumn("Id", "Date", "Start Time", "End Time", "Duration")
                 .WithFormat(ConsoleTableBuilderFormat.Alternative)
-                .ExportAndWriteLine();
+                .ExportAndWriteLine(TableAligntment.Center);
         }
     }
 
