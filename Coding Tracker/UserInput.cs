@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.Data;
 using ConsoleTableExt;
 using Microsoft.Data.Sqlite;
@@ -6,6 +7,8 @@ namespace Coding_Tracker;
 
 public class UserInput
 {
+    private static string TIME = ConfigurationManager.AppSettings["time"];
+    private static string DATE = ConfigurationManager.AppSettings["date"];
     private static string connectionString = @"Data Source = coding_tracker.db";
     public static bool closeApp = false;    
     public static void Input()
@@ -54,7 +57,6 @@ public class UserInput
     {
         using (var connection = new SqliteConnection(connectionString))
         {
-
             connection.Open();
             var tableCmd = connection.CreateCommand();
             tableCmd.CommandText =
@@ -116,17 +118,17 @@ public class UserInput
 
             string date = GetDateInput();
 
-            DateTime startTime = GetTimeFromUser("Enter the new start time(HH:mm):");
+            DateTime startTime = GetTimeFromUser($"Enter the new start time({TIME}):");
 
-            DateTime endTime = GetTimeFromUser("Enter the new end time(HH:mm):");
+            DateTime endTime = GetTimeFromUser($"Enter the new end time({TIME}):");
 
             TimeSpan duration = endTime - startTime;
             
             var tableCmd = connection.CreateCommand();
 
-            string startTimeFinal = startTime.ToString("HH:mm");
+            string startTimeFinal = startTime.ToString($"{TIME}");
 
-            string endTimeFinal = endTime.ToString("HH:mm");
+            string endTimeFinal = endTime.ToString($"{TIME}");
             
 
             tableCmd.CommandText = $"UPDATE coding_tracker SET Date = '{date}', StartTime= '{startTimeFinal}',EndTime = '{endTimeFinal}',Duration = '{duration}' WHERE Id = '{Id}'";
@@ -177,17 +179,17 @@ public class UserInput
             
             string date = GetDateInput();
 
-            DateTime startTime = GetTimeFromUser("Enter start time(HH:mm)->");
+            DateTime startTime = GetTimeFromUser($"Enter start time({TIME})->");
 
-            DateTime endTime = GetTimeFromUser("Enter end time(HH:mm)->");
+            DateTime endTime = GetTimeFromUser($"Enter end time({TIME})->");
 
             TimeSpan duration = endTime - startTime;
             
             var tableCmd = connection.CreateCommand();
             
-            string startTimeFinal = startTime.ToString("HH:mm");
+            string startTimeFinal = startTime.ToString($"{TIME}");
 
-            string endTimeFinal = endTime.ToString("HH:mm");
+            string endTimeFinal = endTime.ToString($"{TIME}");
 
             tableCmd.CommandText = $"INSERT INTO coding_tracker(Date, StartTime, EndTime, Duration) VALUES('{date}', '{startTimeFinal}', '{endTimeFinal}', '{duration}')";
 
@@ -200,11 +202,11 @@ public class UserInput
 
     private static string GetDateInput()
     {
-        Console.WriteLine("Enter the date(MM/dd/yyyy):");
+        Console.WriteLine($"Enter the date({DATE}):");
 
-        DateTime dt = Validation.DateInputValidation("MM/dd/yyyy");
+        DateTime dt = Validation.DateInputValidation($"{DATE}");
 
-        string result = dt.ToString("MM/dd/yyyy");
+        string result = dt.ToString($"{DATE}");
 
         return result;
     }
@@ -213,7 +215,7 @@ public class UserInput
     {
         Console.Write(prompt);
 
-        DateTime result = Validation.DateInputValidation("HH:mm");
+        DateTime result = Validation.DateInputValidation($"{TIME}");
 
         return result;
     }

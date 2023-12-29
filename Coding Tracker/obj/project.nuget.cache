@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dvMFP59xe56CIyX26u0hH+KXnU2FtljG/TpLpWKO7CIEJK9zIuTl34CgVnyczCJ42nFxGYxrE6oY0esDPtIvTg==",
+  "dgSpecHash": "x+PEyKsQaJhS0OmGsYWOmL8we4p7cZgkhP4GohVzpP19fQ22qZHADzPl6pxvfuoRdPqGjxQ8rllwtWJfbMyb9A==",
   "success": true,
   "projectFilePath": "/Users/daniel/RiderProjects/Coding Tracker/Coding Tracker/Coding Tracker.csproj",
   "expectedPackageFiles": [
@@ -11,7 +11,10 @@
     "/Users/daniel/.nuget/packages/sqlitepclraw.core/2.1.6/sqlitepclraw.core.2.1.6.nupkg.sha512",
     "/Users/daniel/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.1.6/sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
     "/Users/daniel/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.6/sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512",
-    "/Users/daniel/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512"
+    "/Users/daniel/.nuget/packages/system.configuration.configurationmanager/8.0.0/system.configuration.configurationmanager.8.0.0.nupkg.sha512",
+    "/Users/daniel/.nuget/packages/system.diagnostics.eventlog/8.0.0/system.diagnostics.eventlog.8.0.0.nupkg.sha512",
+    "/Users/daniel/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/Users/daniel/.nuget/packages/system.security.cryptography.protecteddata/8.0.0/system.security.cryptography.protecteddata.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }
