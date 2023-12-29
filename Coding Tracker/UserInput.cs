@@ -1,4 +1,5 @@
 using System.Data;
+using ConsoleTableExt;
 using Microsoft.Data.Sqlite;
 
 namespace Coding_Tracker;
@@ -28,9 +29,9 @@ public class UserInput
                     closeApp = true;
                     Environment.Exit(0);
                     break;
-                //case "1":
-                    //ViewRecords();
-                    //break;
+                case "1":
+                    ViewRecords();
+                    break;
                 case "2":
                     InsertCodingRecords();
                     break;
@@ -44,11 +45,58 @@ public class UserInput
         }
     }
 
+    private static void ViewRecords()
+    {
+        using (var connection = new SqliteConnection(connectionString))
+        {
+
+            connection.Open();
+            var tableCmd = connection.CreateCommand();
+            tableCmd.CommandText =
+                $"SELECT * FROM coding_tracker ";
+
+            var tableData = new List<List<object>> {};
+
+            SqliteDataReader reader = tableCmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    List<object> rowData = new List<object>
+                    {
+                        reader.GetInt32(0),
+                        reader.GetDateTime(1),
+                        reader.GetDateTime(2),
+                        reader.GetDateTime(3),
+                        reader.GetTimeSpan(4)
+                    };
+                    
+                    tableData.Add(rowData);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No data found!");
+            }
+            Console.Clear();
+
+            ConsoleTableBuilder
+                .From(tableData)
+                .WithTitle("Coding Tracker ", ConsoleColor.Yellow, ConsoleColor.DarkGray)
+                .WithColumn("Id", "Date", "Start Time", "End Time", "Duration")
+                .WithFormat(ConsoleTableBuilderFormat.Alternative)
+                .ExportAndWriteLine();
+        }
+    }
+
     private static void UpdateRecords()
     {
         using (var connection = new SqliteConnection(connectionString))
         {
             connection.Open();
+            
+            ViewRecords();
             
             Console.WriteLine("Enter the id of the row you want to update");
             
@@ -84,6 +132,8 @@ public class UserInput
     {
         using (var connection = new SqliteConnection(connectionString))
         {
+            ViewRecords();
+            
             Console.WriteLine("Enter the id of the row you want to delete:");
             string id = Console.ReadLine();
             int Id;
@@ -112,6 +162,8 @@ public class UserInput
         using (var connection = new SqliteConnection(connectionString))
         {
             connection.Open();
+            
+            ViewRecords();
             
             DateTime date = GetDateInput();
 
@@ -179,4 +231,13 @@ public class UserInput
 
         return result;
     }
+}
+
+internal class CodingTracker
+{
+    public int Id;
+    public DateTime Date;
+    public DateTime StartTime;
+    public DateTime EndTime;
+    public TimeSpan Duration;
 }
