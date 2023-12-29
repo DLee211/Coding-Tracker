@@ -1,5 +1,4 @@
 using System.Configuration;
-using System.Data;
 using ConsoleTableExt;
 using Microsoft.Data.Sqlite;
 
@@ -219,13 +218,4 @@ public class UserInput
 
         return result;
     }
-}
-
-internal class CodingTracker
-{
-    public int Id;
-    public DateTime Date;
-    public DateTime StartTime;
-    public DateTime EndTime;
-    public TimeSpan Duration;
 }
