@@ -37,10 +37,46 @@ public class UserInput
                 case "3":
                     DeleteRecords();
                     break;
-                //case "4":
-                    //UpdateRecords();
-                    //break;
+                case "4":
+                    UpdateRecords();
+                    break;
             }
+        }
+    }
+
+    private static void UpdateRecords()
+    {
+        using (var connection = new SqliteConnection(connectionString))
+        {
+            connection.Open();
+            
+            Console.WriteLine("Enter the id of the row you want to update");
+            
+            string id = Console.ReadLine();
+            int Id;
+
+            while (!int.TryParse(id, out Id))
+            {
+                Console.WriteLine("Id has to be an integer!");
+                id = Console.ReadLine();
+            }
+
+            DateTime date = GetDateInput();
+
+            DateTime startTime = GetTimeFromUser("Enter the new start time(HH:mm):");
+
+            DateTime endTime = GetTimeFromUser("Enter the new end time(HH:mm):");
+
+            TimeSpan duration = endTime - startTime;
+            
+            var tableCmd = connection.CreateCommand();
+
+            tableCmd.CommandText = $"UPDATE coding_tracker SET Date = '{date}', StartTime= '{startTime}',EndTime = '{endTime}',Duration = '{duration}' WHERE Id = '{Id}'";
+
+            tableCmd.ExecuteNonQuery();
+            
+            connection.Close();
+            
         }
     }
 
