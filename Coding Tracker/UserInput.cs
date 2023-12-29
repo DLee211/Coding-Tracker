@@ -177,9 +177,9 @@ public class UserInput
             
             string date = GetDateInput();
 
-            DateTime startTime = GetTimeFromUser("Enter start time(hh:mm)->");
+            DateTime startTime = GetTimeFromUser("Enter start time(HH:mm)->");
 
-            DateTime endTime = GetTimeFromUser("Enter end time(HH:MM)->");
+            DateTime endTime = GetTimeFromUser("Enter end time(HH:mm)->");
 
             TimeSpan duration = endTime - startTime;
             
